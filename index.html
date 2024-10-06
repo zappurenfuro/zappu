@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --primary: #2d3436;
+            --secondary: #0984e3;
+            --accent: #00b894;
+            --text: #2d3436;
+            --background: #f5f6fa;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .header-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+        }
+
+        .header-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 2rem;
+            opacity: 0;
+        }
+
+        .tech-badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        nav.visible {
+            transform: translateY(0);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .carousel {
+            width: 100%;
+            display: flex;
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+        }
+
+        .carousel img {
+            width: 100%;
+            border-radius: 10px 10px 0 0;
+            object-fit: cover;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .carousel-control {
+            background-color: var(--secondary);
+            border: none;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .project-tech {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .project-tech span {
+            background: var(--background);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .header-content p {
+                font-size: 1.2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header id="home">
+        <div class="header-content">
+            <h1>zappurenfuro</h1>
+            <p>Backend Dev</p>
+            <div class="tech-stack">
+                <span class="tech-badge">JavaScript</span>
+                <span class="tech-badge">Node.js</span>
+                <span class="tech-badge">React.js</span>
+                <span class="tech-badge">Laravel</span>
+                <span class="tech-badge">PHP</span>
+                <span class="tech-badge">Inertia</span>
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">MySQL</span>
+            </div>
+        </div>
+    </header>
+
+    <section id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="carousel">
+                    <img src="https://gcdnb.pbrd.co/images/9b6zpKk8QERv.png?o=1" alt="Project Image 1">
+                    <img src="assets/images/ezgif-6-1e709a1ddc.gif" alt="Project Image 2" style="display: none;">
+                    <img src="assets/images/ezgif-6-b7703d4409.gif" alt="Project Image 3" style="display: none;">
+                    <img src="assets/images/ezgif-6-146426ac4b.gif" alt="Project Image 4" style="display: none;">
+                    <img src="assets/images/ezgif-6-da4ceaa897.gif" alt="Project Image 5" style="display: none;">
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-control" onclick="changeImage(this, 0)">1</button>
+                    <button class="carousel-control" onclick="changeImage(this, 1)">2</button>
+                    <button class="carousel-control" onclick="changeImage(this, 2)">3</button>
+                    <button class="carousel-control" onclick="changeImage(this, 3)">4</button>
+                    <button class="carousel-control" onclick="changeImage(this, 4)">5</button>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Desa Babadan Profile Web</h3>
+                    <p>A profile website dedicated to the cultural and rich village of Babadan in Ngajum, Malang. The website shows the culture, culinary, and facilities that's available in the village.</p>
+                    <div class="project-tech">
+                        <span>React.js</span>
+                        <span>Inertia</span>
+                        <span>MySQL</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="carousel">
+                    <img src="https://gcdnb.pbrd.co/images/MYJy2fCd4HlJ.png?o=1" alt="Project Image 1">
+                    <img src="https://gcdnb.pbrd.co/images/TEWiUNqQ8NZC.png?o=1" alt="Project Image 2" style="display: none;">
+                    <img src="assets/images/ezgif-2-fa717587db.gif" alt="Project Image 3" style="display: none;">
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-control" onclick="changeImage(this, 0)">1</button>
+                    <button class="carousel-control" onclick="changeImage(this, 1)">2</button>
+                    <button class="carousel-control" onclick="changeImage(this, 2)">3</button>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">LGR Helper Discord Bot</h3>
+                    <p>Let's Get Rich Helper is a Discord bot designed to fetch and post updates from the LINE Let's Get Rich game into a specified Discord channel.</p>
+                    <div class="project-tech">
+                        <span>JavaScript</span>
+                        <span>Discord</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="carousel">
+                    <img src="https://gcdnb.pbrd.co/images/su4jZ3yQSnV3.png?o=1" alt="Project Image 1">
+                    <img src="https://gcdnb.pbrd.co/images/Qllhgxfc9uBt.png?o=1" alt="Project Image 2" style="display: none;">
+                    <img src="assets/images/ezgif-7-069d12425b.gif" alt="Project Image 3" style="display: none;">
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-control" onclick="changeImage(this, 0)">1</button>
+                    <button class="carousel-control" onclick="changeImage(this, 1)">2</button>
+                    <button class="carousel-control" onclick="changeImage(this, 2)">3</button>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">PoE Flip Assistance</h3>
+                    <p>Path of Exile Flip Assistance is a web application for Path of Exile that help players to get the best experience of item flipping. PoE-FA is also now integrated with Discord!</p>
+                    <div class="project-tech">
+                        <span>JavaScript</span>
+                        <span>Node.js</span>
+                        <span>Discord</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="carousel">
+                    <img src="https://gcdnb.pbrd.co/images/1ofOfeXcwQky.png?o=1" alt="Project Image 1">
+                    <img src="https://gcdnb.pbrd.co/images/AgqwOzrnzYYC.png?o=1" alt="Project Image 2" style="display: none;">
+                    <img src="assets/images/ezgif-7-583d62fd8b.gif" alt="Project Image 3" style="display: none;">
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-control" onclick="changeImage(this, 0)">1</button>
+                    <button class="carousel-control" onclick="changeImage(this, 1)">2</button>
+                    <button class="carousel-control" onclick="changeImage(this, 2)">3</button>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Manga Tracker</h3>
+                    <p>Manga Tracker is a web application designed to help users organize and track their favorite manga series. Users can prioritize their reading list with a 1-5 ranking system.</p>
+                    <div class="project-tech">
+                        <span>JavaScript</span>
+                        <span>CSS</span>
+                        <span>HTML</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">Projects In Progress</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="carousel">
+                    <img src="https://gcdnb.pbrd.co/images/zfNG4S3Sfo7M.png?o=1" alt="Project Image 1">
+                    <img src="https://via.placeholder.com/600x400?text=Project+1+Image+2" alt="Project Image 2" style="display: none;">
+                    <img src="https://via.placeholder.com/600x400?text=Project+1+Image+3" alt="Project Image 3" style="display: none;">
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-control" onclick="changeImage(this, 0)">1</button>
+                    <button class="carousel-control" onclick="changeImage(this, 1)">2</button>
+                    <button class="carousel-control" onclick="changeImage(this, 2)">3</button>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">JO Web Project</h3>
+                    <p>~</p>
+                    <div class="project-tech">
+                        <span>React.js</span>
+                        <span>Inertia</span>
+                        <span>MySQL</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="carousel">
+                    <img src="https://gcdnb.pbrd.co/images/pBx5CEyZ5PKW.png?o=1" alt="Project Image 1">
+                    <img src="https://via.placeholder.com/600x400?text=Project+1+Image+2" alt="Project Image 2" style="display: none;">
+                    <img src="https://via.placeholder.com/600x400?text=Project+1+Image+3" alt="Project Image 3" style="display: none;">
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-control" onclick="changeImage(this, 0)">1</button>
+                    <button class="carousel-control" onclick="changeImage(this, 1)">2</button>
+                    <button class="carousel-control" onclick="changeImage(this, 2)">3</button>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">PoE Gallery</h3>
+                    <p>~</p>
+                    <div class="project-tech">
+                        <span>JavaScript</span>
+                        <span>CSS</span>
+                        <span>HTML</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="carousel">
+                    <img src="https://gcdnb.pbrd.co/images/GQ5y0LOaPdpk.png?o=1" alt="Project Image 1">
+                    <img src="https://via.placeholder.com/600x400?text=Project+1+Image+2" alt="Project Image 2" style="display: none;">
+                    <img src="https://via.placeholder.com/600x400?text=Project+1+Image+3" alt="Project Image 3" style="display: none;">
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-control" onclick="changeImage(this, 0)">1</button>
+                    <button class="carousel-control" onclick="changeImage(this, 1)">2</button>
+                    <button class="carousel-control" onclick="changeImage(this, 2)">3</button>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Light Novel Tracker</h3>
+                    <p>~</p>
+                    <div class="project-tech">
+                        <span>JavaScript</span>
+                        <span>CSS</span>
+                        <span>HTML</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-container">
+            <p>You can contact me here!</p>
+            <div class="contact-links">
+                <a href="mailto:zaprenfro23@gmail.com" class="contact-link">zaprenfro23@gmail.com</a>
+                <a href="https://github.com/zappurenfuro" class="contact-link">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Carousel logic
+        function changeImage(control, index) {
+            const carousel = control.closest('.project-card').querySelector('.carousel');
+            const images = carousel.querySelectorAll('img');
+            images.forEach(img => img.style.display = 'none');
+            images[index].style.display = 'block';
+        }
+
+        // Navigation visibility
+        let lastScroll = 0;
+        const nav = document.querySelector('nav');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll <= 0) {
+                nav.classList.remove('visible');
+            }
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                nav.classList.remove('visible');
+            }
+            if (currentScroll < lastScroll) {
+                nav.classList.add('visible');
+            }
+            lastScroll = currentScroll;
+        });
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Header animations
+        gsap.to('.header-content h1', {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: 0.5
+        });
+
+        gsap.to('.header-content p', {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: 0.8
+        });
+
+        gsap.to('.tech-stack', {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: 1.1
+        });
+
+        // Project cards animation
+        gsap.utils.toArray('.project-card').forEach((card, i) => {
+            gsap.to(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top bottom-=100',
+                    toggleActions: 'play none none reverse'
+                },
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                delay: i * 0.2
+            });
+        });
+    </script>
+</body>
+
+</html>
