@@ -165,11 +165,23 @@ section {
 .project-content {
     padding: 1.5rem;
 }
+.project-content-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.faIcon {
+    border: none;
+    margin-left: 8px;
+    font-size: 16px;
+    background: none;
+    cursor: pointer;
+}
 
 .project-title {
     font-size: 1.5rem;
-    margin-bottom: 1rem;
     color: var(--primary);
+    cursor: pointer;
 }
 
 .project-tech {

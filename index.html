@@ -8,6 +8,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
@@ -41,26 +42,27 @@
         <div class="projects-grid">
             <div class="project-card">
                 <div class="carousel">
-                    <img src="https://gcdnb.pbrd.co/images/y5Lw2k4tJmqU.png?o=1" alt="Project Image 1">
-                    <img src="assets/images/ezgif-6-1e709a1ddc.gif" alt="Project Image 2" style="display: none;">
-                    <img src="assets/images/ezgif-6-b7703d4409.gif" alt="Project Image 3" style="display: none;">
-                    <img src="assets/images/ezgif-6-146426ac4b.gif" alt="Project Image 4" style="display: none;">
-                    <img src="assets/images/ezgif-6-da4ceaa897.gif" alt="Project Image 5" style="display: none;">
+                    <img src="https://gcdnb.pbrd.co/images/r45ZfxGvLGVD.png?o=1" alt="Project Image 1">
+                    <img src="https://gcdnb.pbrd.co/images/RVfbOP79x8A4.png?o=1" alt="Project Image 2" style="display: none;">
+                    <img src="assets/images/ezgif-5-de884b5a84.gif" alt="Project Image 3" style="display: none;">
                 </div>
                 <div class="carousel-controls">
                     <button class="carousel-control" onclick="changeImage(this, 0)">1</button>
                     <button class="carousel-control" onclick="changeImage(this, 1)">2</button>
                     <button class="carousel-control" onclick="changeImage(this, 2)">3</button>
-                    <button class="carousel-control" onclick="changeImage(this, 3)">4</button>
-                    <button class="carousel-control" onclick="changeImage(this, 4)">5</button>
                 </div>
                 <div class="project-content">
-                    <h3 class="project-title">Desa Babadan Profile Web</h3>
-                    <p>A profile website dedicated to the cultural and rich village of Babadan in Ngajum, Malang. The website shows the culture, culinary, and facilities that's available in the village.</p>
+                    <div class="project-content-title">
+                        <h3 class="project-title" onclick="window.open('https://zappurenfuro.github.io/Manga/', '_blank')">Manga Tracker</h3>
+                        <button id="faIconBtn" class="faIcon" onclick="window.open('https://zappurenfuro.github.io/Manga/', '_blank')">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </button>
+                    </div>
+                    <p>Manga Tracker is a web application designed to help users organize and track their favorite manga series. Users can prioritize their reading list with a 1-5 ranking system.</p>
                     <div class="project-tech">
-                        <span>React.js</span>
-                        <span>Inertia.js</span>
-                        <span>MySQL</span>
+                        <span>JavaScript</span>
+                        <span>CSS</span>
+                        <span>HTML</span>
                     </div>
                 </div>
             </div>
@@ -77,7 +79,12 @@
                     <button class="carousel-control" onclick="changeImage(this, 2)">3</button>
                 </div>
                 <div class="project-content">
-                    <h3 class="project-title">LGR Helper</h3>
+                    <div class="project-content-title">
+                        <h3 class="project-title" onclick="window.open('https://top.gg/bot/1250362981569790035', '_blank')">LGR Helper</h3>
+                        <button id="faIconBtn" class="faIcon" onclick="window.open('https://top.gg/bot/1250362981569790035', '_blank')">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </button>
+                    </div>
                     <p>Let's Get Rich Helper is a Discord bot designed to fetch and post updates from the LINE Let's Get Rich game into a specified Discord channel.</p>
                     <div class="project-tech">
                         <span>JavaScript</span>
@@ -99,7 +106,12 @@
                     <button class="carousel-control" onclick="changeImage(this, 2)">3</button>
                 </div>
                 <div class="project-content">
-                    <h3 class="project-title">PoE Flip Assistance</h3>
+                    <div class="project-content-title">
+                        <h3 class="project-title" onclick="window.open('https://poefa.xyz', '_blank')">PoE Flip Assistance</h3>
+                        <button id="faIconBtn" class="faIcon" onclick="window.open('https://poefa.xyz', '_blank')">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </button>
+                    </div>
                     <p>Path of Exile Flip Assistance is a web application for Path of Exile that help players to get the best experience of item flipping. PoE-FA is also now integrated with Discord!</p>
                     <div class="project-tech">
                         <span>JavaScript</span>
@@ -111,22 +123,32 @@
 
             <div class="project-card">
                 <div class="carousel">
-                    <img src="https://gcdnb.pbrd.co/images/r45ZfxGvLGVD.png?o=1" alt="Project Image 1">
-                    <img src="https://gcdnb.pbrd.co/images/RVfbOP79x8A4.png?o=1" alt="Project Image 2" style="display: none;">
-                    <img src="assets/images/ezgif-5-de884b5a84.gif" alt="Project Image 3" style="display: none;">
+                    <img src="https://gcdnb.pbrd.co/images/y5Lw2k4tJmqU.png?o=1" alt="Project Image 1">
+                    <img src="assets/images/ezgif-6-1e709a1ddc.gif" alt="Project Image 2" style="display: none;">
+                    <img src="assets/images/ezgif-6-b7703d4409.gif" alt="Project Image 3" style="display: none;">
+                    <img src="assets/images/ezgif-6-146426ac4b.gif" alt="Project Image 4" style="display: none;">
+                    <img src="assets/images/ezgif-6-da4ceaa897.gif" alt="Project Image 5" style="display: none;">
                 </div>
                 <div class="carousel-controls">
                     <button class="carousel-control" onclick="changeImage(this, 0)">1</button>
                     <button class="carousel-control" onclick="changeImage(this, 1)">2</button>
                     <button class="carousel-control" onclick="changeImage(this, 2)">3</button>
+                    <button class="carousel-control" onclick="changeImage(this, 3)">4</button>
+                    <button class="carousel-control" onclick="changeImage(this, 4)">5</button>
                 </div>
                 <div class="project-content">
-                    <h3 class="project-title">Manga Tracker</h3>
-                    <p>Manga Tracker is a web application designed to help users organize and track their favorite manga series. Users can prioritize their reading list with a 1-5 ranking system.</p>
+                    <div class="project-content-title">
+                        <h3 class="project-title" onclick="window.open('https://desababadanngajum.com', '_blank')">Desa Babadan Profile Web</h3>
+                        <button id="faIconBtn" class="faIcon" onclick="window.open('https://desababadanngajum.com', '_blank')">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </button>
+                    </div>
+                    
+                    <p>A profile website dedicated to the cultural and rich village of Babadan in Ngajum, Malang. The website shows the culture, culinary, and facilities that's available in the village.</p>
                     <div class="project-tech">
-                        <span>JavaScript</span>
-                        <span>CSS</span>
-                        <span>HTML</span>
+                        <span>Laravel</span>
+                        <span>React.js</span>
+                        <span>Inertia.js</span>
                     </div>
                 </div>
             </div>
@@ -143,7 +165,12 @@
                     <button class="carousel-control" onclick="changeImage(this, 2)">3</button>
                 </div>
                 <div class="project-content">
-                    <h3 class="project-title">Albion Balance Assistance</h3>
+                    <div class="project-content-title">
+                        <h3 class="project-title" onclick="window.open('https://discord.com/oauth2/authorize?client_id=1251202711018405999&permissions=414464661568&integration_type=0&scope=bot+applications.commands', '_blank')">Albion Balance Assistance</h3>
+                        <button id="faIconBtn" class="faIcon" onclick="window.open('https://discord.com/oauth2/authorize?client_id=1251202711018405999&permissions=414464661568&integration_type=0&scope=bot+applications.commands', '_blank')">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </button>
+                    </div>
                     <p>Albion Balance Assistance is a Discord bot that provides financial management solutions for guilds, automating tasks such as member balance tracking and treasury management.</p>
                     <div class="project-tech">
                         <span>JavaScript</span>
@@ -165,7 +192,12 @@
                     <button class="carousel-control" onclick="changeImage(this, 2)">3</button>
                 </div>
                 <div class="project-content">
-                    <h3 class="project-title">Nusantara Explore</h3>
+                    <div class="project-content-title">
+                        <h3 class="project-title" onclick="window.open('https://github.com/zappurenfuro/WebProject', '_blank')">Nusantara Explore</h3>
+                        <button id="faIconBtn" class="faIcon" onclick="window.open('https://github.com/zappurenfuro/WebProject', '_blank')">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </button>
+                    </div>
                     <p>Nusantara Explore is a tourism platform for the beauty of Indonesia. Book hotels, connect to forums, and access informations on the best destinations across the archipelago.</p>
                     <div class="project-tech">
                         <span>Laravel</span>
@@ -237,6 +269,28 @@
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">Light Novel Tracker</h3>
+                    <p>~</p>
+                    <div class="project-tech">
+                        <span>JavaScript</span>
+                        <span>CSS</span>
+                        <span>HTML</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="carousel">
+                    <img src="https://gcdnb.pbrd.co/images/BA7nW3PbKClS.png?o=1" alt="Project Image 1">
+                    <img src="https://via.placeholder.com/600x400?text=Project+1+Image+2" alt="Project Image 2" style="display: none;">
+                    <img src="https://via.placeholder.com/600x400?text=Project+1+Image+3" alt="Project Image 3" style="display: none;">
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-control" onclick="changeImage(this, 0)">1</button>
+                    <button class="carousel-control" onclick="changeImage(this, 1)">2</button>
+                    <button class="carousel-control" onclick="changeImage(this, 2)">3</button>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Albion Profit Checker</h3>
                     <p>~</p>
                     <div class="project-tech">
                         <span>JavaScript</span>
